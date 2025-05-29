@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form Submission Result</title>
+    <link href="./dist/output.css" rel="stylesheet">
+</head>
+<body class="bg-gray-100 min-h-screen flex items-center justify-center">
+    <div class="bg-white p-8 rounded shadow-md max-w-md w-full">
+        <h2 class="text-2xl font-semibold mb-4">Submitted Information</h2>
+        <div id="output" class="space-y-2 text-gray-700"></div>
+        <div class="mt-6">
+            <a href="index.html" class="text-blue-600 hover:underline">Back to Form</a>
+        </div>
+    </div>
+
+    <script>
+        const data = JSON.parse(localStorage.getItem('formData'));
+        const output = document.getElementById('output');
+
+        if (data) {
+            output.innerHTML = `
+                <p><strong>Full Name:</strong> ${data.fullName}</p>
+                <p><strong>Email:</strong> ${data.email}</p>
+                <p><strong>Phone:</strong> ${data.phone}</p>
+                <p><strong>Age:</strong> ${data.age}</p>
+                <p><strong>Message:</strong> ${data.message}</p>
+            `;
+        } else {
+            output.innerHTML = `<p class="text-red-600">No data found in local storage.</p>`;
+        }
+    </script>
+</body>
+</html>

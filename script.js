@@ -42,22 +42,9 @@ form.addEventListener('submit', (e) => {
         message: document.getElementById('message').value
     };
 
-    // Add to submissions array
-    formSubmissions.push(formData);
+  // Store the form data in localStorage
+  localStorage.setItem('formData', JSON.stringify(formData));
 
-    // In a real application, you would send this data to a server
-    // For example:
-    // fetch('/api/submit-form', {
-    //     method: 'POST',
-    //     headers: {
-    //         'Content-Type': 'application/json',
-    //     },
-    //     body: JSON.stringify(formData)
-    // });
-
-    // Show success message (instead of logging to console)
-    alert('Form submitted successfully!');
-    
-    // Close modal and reset form
-    closeModal();
-}); 
+  // Redirect to display page
+  window.location.href = 'display.html';
+});
